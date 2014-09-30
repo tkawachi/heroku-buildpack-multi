@@ -49,7 +49,7 @@ for BUILDPACK in $(cat $1/.buildpacks); do
         cat "$profile"
         source "$profile"
       done
-      ls -R /app/
+      ls -R /app/.apt/
       $dir/bin/compile $1 $2 $3
 
       if [ $? != 0 ]; then
