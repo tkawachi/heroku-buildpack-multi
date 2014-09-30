@@ -45,6 +45,9 @@ for BUILDPACK in $(cat $1/.buildpacks); do
 
     if [ $? == 0 ]; then
       echo "=====> Detected Framework: $framework"
+      for profile in $(find "$1/.profile.d" -type f); do
+        source "$profile"
+      done
       $dir/bin/compile $1 $2 $3
 
       if [ $? != 0 ]; then
